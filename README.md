@@ -83,6 +83,24 @@ After finishing your required elements, you can push your work further. These go
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What is React JS and what problems does it solve? Support your answer with concepts introduced in class and from your personal research on the web.
+
+  React Js is a library with many premade components designed and maintained by a team at facebook.
+  The library has many functions that allow building, styling and inserting HTML object into the DOM alot simpler.
+  2 functions we used this week were, useState and useEffect. useState allows us to create a hook to give state to our functional components,
+  which in turn allows us to change state without switching classes. useEffect allows us to update the DOM every time a function renders and a change is needed.
+
 1. Describe component state.
+
+  According to the web, component state is an object of observable properties that control the behavior of the component.
+  To my understanding that just says that state is whether a component is visible in the DOM or not, it either has a state or is null.
+
 1. Describe props.
+
+  Props is shorthand for properties or in this case, the information we get back from an API. Props is also used when transferring data that is required between components.
+  The props are taken in by the component functions and can then be individually defined within the function through object destructuring. 
+
 1. What are side effects, and how do you sync effects in a React component to changes of certain state or props?
+
+  Side effects are anything that affect something outside of the scope of the function being executed.  
+  You can sync effects by including the state or prop to look out for in the empty array set at the end of useEffect, 
+  that will inturn rerun the function if a change is made in those declared dependencies.
