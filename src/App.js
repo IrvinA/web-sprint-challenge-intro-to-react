@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
 
@@ -10,10 +10,21 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
 
+  const [characters, setCharacters] = useState([])
+  const [openCharDetails, setOpenCharDetails] = useState(null)
+
+  const openDetails = id => {
+    setOpenCharDetails(id)
+  }
+
+  const closeDetails = () => {
+    setOpenCharDetails(null)
+  }
+
   useEffect(() => {
     axios.get(`https://swapi.dev/api/people`)
       .then(res => {
-        console.log(res.data);
+        setCharacters(res.data);
       })
       .catch(err => {
         console.log(err);
@@ -23,6 +34,14 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
+      {
+        characters.map(ch => {
+          return <Character data={ch} key={ch.id} open={openDetails}/>
+        })
+      }
+      {
+        <Details details={openCharDetails} close={closeDetails} />
+      }
     </div>
   );
 }
