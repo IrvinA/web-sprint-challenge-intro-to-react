@@ -3,6 +3,22 @@ import './App.css';
 import axios from 'axios';
 import Character from './components/Character';
 import Details from './components/Details';
+import styled from 'styled-components';
+
+const StyledDiv = styled.div`
+  margin: 10% 0;
+  h1 {
+    opacity: 70%;
+    margin: 0 30% 5%;
+    color: black;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 4px lime;
+    background-image: linear-gradient(to left, black, white 50%, white);
+    border-radius: 10px;
+    padding: 1% 0;
+  }
+`
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -34,8 +50,8 @@ const App = () => {
   }, [])
 
   return (
-    <div className="App">
-      <h1 className="Header">Characters</h1>
+    <StyledDiv className="App">
+      <h1 className="Header">Star Wars Characters</h1>
       {
         characters.map(ch => {
           return <Character data={ch} key={ch.id} open={openDetails}/>
@@ -44,7 +60,7 @@ const App = () => {
       {
         openCharDetails && <Details details={openCharDetails} close={closeDetails} />
       }
-    </div>
+    </StyledDiv>
   );
 }
 
