@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
+import Character from './components/Character';
+import Details from './components/Details';
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -40,7 +42,7 @@ const App = () => {
         })
       }
       {
-        <Details details={openCharDetails} close={closeDetails} />
+        openCharDetails && <Details details={openCharDetails} close={closeDetails} />
       }
     </div>
   );
