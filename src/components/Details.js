@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { CardBody, Card, CardTitle, CardText, CardSubtitle } from 'reactstrap';
 
 const StyledDiv = styled.div`
     h2 {
@@ -18,24 +17,25 @@ export default function Details(props) {
     const [openDetails, setOpenDetails] = useState(null)
 
     useEffect(() => {
-        axios.get(`http://swapi.dev/api/people/${details}/`)
+        axios.get(`${details.url}`)
             .then(res => {setOpenDetails(res.data)})
             .catch(err => {console.log(err)})
     }, [details])
 
     return (
         <StyledDiv>
-            <Card>
-                <CardBody>
-                    <CardTitle>Character Information:</CardTitle>
-                    <CardSubtitle>Name: {openDetails.name}</CardSubtitle>
-                    <CardText>
-                        Gender: ${openDetails.gender}<br></br>
-                        Height: ${openDetails.height}
-                    </CardText>
-                    <button onClick={close}>Close</button>
-                </CardBody>
-            </Card> 
+            <h2>Character Information:</h2>
+            {
+                openDetails &&
+                <>
+                    <h3>Name: {openDetails.name}</h3>
+                    <p>
+                        Gender: {openDetails.gender}<br></br>
+                        Height: {openDetails.height}
+                    </p>
+                </>
+            }
+            <button onClick={close}>Close</button>
         </StyledDiv>
     )
 }

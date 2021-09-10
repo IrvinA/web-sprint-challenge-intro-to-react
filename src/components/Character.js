@@ -29,7 +29,7 @@ export default function Character({ data, open }) {
     return (
         <StyledDiv>
             {data.name}
-            <button onClick={() => open(data.id)}>
+            <button onClick={() => open(data)}>
                 Character Details
             </button>
         </StyledDiv>
